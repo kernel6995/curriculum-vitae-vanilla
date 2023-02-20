@@ -1,5 +1,6 @@
-/* ==================== VARIABLES  ==================== */
+/* ===== VARIABLES  ===== */
 :root {
+    /* tamaños para contenedores */
     --spacing-0: 0;
     --spacing-1: .5rem;
     --spacing-2: 1rem;
@@ -11,8 +12,18 @@
     --spacing-8: 4rem;
     --spacing-9: 5rem;
 
+    /* tamaños para fuentes */
+    --size-1: 1em;
+    --size-2: 1.3em;
+    --size-3: 1.5em;
+    --size-4: 1.7em;
+    --size-5: 2em;
+
+    /* colores */
     --dark-1: #222;
+
     --light-1: #EEE;
+    --light-2: #DDD;
 }
 
 /* ============================== RESET ==============================*/
@@ -27,7 +38,9 @@
 
 /* ============================== ESTILO DE ETIQUETAS ==============================*/
 body {
+    background-color: var(--light-2);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--dark-1);
 }
 
 ol,
@@ -49,16 +62,15 @@ a {
 }
 
 main {
-    background-color: var(--light-1);
+    display: flex;
+    flex-direction: column;
 }
 
 /* ==================== CLASES ==================== */
 .container {
-    color: var(--dark-1);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: var(--spacing-6);
     padding: 7rem 1rem 1rem 1rem;
 }
@@ -69,24 +81,29 @@ main {
 }
 
 .card {
-    color: var(--light-1);
-    background-color: var(--dark-1);
+    background-color: var(--light-1);
     border-radius: var(--spacing-1);
     display: flex;
     flex-direction: column;
+    gap: var(--spacing-2);
     padding: var(--spacing-2);
+}
+
+.card.card-dark {
+    background-color: var(--dark-1);
+    color: var(--light-1);
 }
 
 @media (min-width: 991px) {
     .container {
-        padding-left: var(--spacing-6);
-        padding-right: var(--spacing-6);
+        padding-left: 10rem;
+        padding-right: 10rem;
     }
 }
 
-#myModal {
+/* #myModal {
     background-color: rgba(0, 0, 0, 0.8);
-    /* position: fixed; */
+    position: fixed;
     width: 100%;
     height: 100%;
     z-index: 10;
@@ -98,10 +115,10 @@ main {
 }
 
 .modal-content {
-    width: 80%;
     display: flex;
     height: 70%;
     overflow: hidden;
+    width: 80%;
 }
 
 #myModal header {
@@ -114,341 +131,263 @@ main {
     color: var(--light-1);
 }
 
-#myModal figure {
-}
+#myModal figure {} */
 
 /* ==================== MENU DE NAVEGACION ==================== */
-#navBar {
-    color: var(--dark-1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    min-width: 100%;
-    padding: var(--spacing-2);
+#MenuNavegacion {
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    left: 0;
+    min-width: 100%;
+    padding: var(--spacing-2);
+    position: fixed;
+    top: 0;
     transition: 0.5s;
+    z-index: 10;
 }
 
-#navBar.sticky {
+#MenuNavegacion.sticky {
     background-color: var(--light-1);
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
 }
 
-#navBar h1 {
+#MenuNavegacion .logo {
+    color: var(--light-1);
+}
+
+#MenuNavegacion.sticky .logo {
+    color: initial;
+}
+
+#MenuNavegacion h1 {
     font-size: 2em;
     font-weight: 500;
 }
 
-#navBar h2 {
+#MenuNavegacion h2 {
     font-size: 1.3em;
     font-weight: 300;
 }
 
-#navBar .navigation {
+#MenuNavegacion .navigation {
     display: flex;
     gap: var(--spacing-6);
 }
 
 @media (max-width: 991px) {
-    #navBar .navigation {
+    #MenuNavegacion .navigation {
         display: none;
     }
 
-    #navBar .navigation.active {
+    #MenuNavegacion .navigation.active {
+        align-items: center;
         background-color: var(--light-1);
-        position: fixed;
-        top: 5.5rem;
-        left: 0;
-        width: 100%;
-        height: calc(100% - 5rem);
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         gap: var(--spacing-4);
+        height: calc(100% - 5rem);
+        justify-content: center;
+        left: 0;
+        position: fixed;
+        top: 5.5rem;
+        width: 100%;
     }
 
-    #navBar .navigation a {
+    #MenuNavegacion .navigation a {
         display: block;
         font-size: 2em;
-        padding: var(--spacing-2) var(--spacing-3);
+        padding: var(--spacing-1) var(--spacing-2);
     }
 
     .menuToggle {
-        filter: invert(1);
-        position: relative;
-        height: var(--spacing-8);
-        width: var(--spacing-8);
         background: url("/images/menu.png");
-        background-size: 30px;
-        background-repeat: no-repeat;
         background-position: center;
+        background-repeat: no-repeat;
+        background-size: 30px;
         cursor: pointer;
+        height: var(--spacing-8);
+        position: relative;
+        width: var(--spacing-8);
+    }
+
+    #MenuNavegacion.sticky .menuToggle {
+        filter: invert(1);
     }
 
     .menuToggle.active {
         background: url("/images/close.png");
-        background-size: 25px;
-        background-repeat: no-repeat;
         background-position: center;
+        background-repeat: no-repeat;
+        background-size: 25px;
     }
 }
 
 @media (min-width: 992px) {
-    #navBar h1 {
+    #MenuNavegacion h1 {
         font-size: 1.7em;
     }
 
-    #navBar h2 {
+    #MenuNavegacion h2 {
         font-size: 1em;
+    }
+
+    #MenuNavegacion .navigation {
+        color: var(--light-1);
+    }
+    
+    #MenuNavegacion.sticky .navigation {
+        color: initial;
     }
 }
 
 /* ==================== CABECERA DE PRESENTACION ==================== */
-#profileHeader {
-    padding-top: var(--spacing-0);
+#Inicio {
+    background-color: var(--dark-1);
     min-height: 100vh;
+    align-items: center;
 }
 
-#profileHeader .card {
-    max-width: 420px;
-    border-radius: var(--spacing-2) 0 var(--spacing-2) 0;
-    display: block;
+#Inicio .card {
+    /* apunte--- reducir flexbox en .card?*/
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 480px;
 }
 
-#profileHeader .card figure {
-    float: right;
-    background-color: var(--light-1);
-    margin: var(--spacing-1);
-    width: 170px;
+#Inicio figure {
+    width: 40%;
 }
 
-#profileHeader .card p {
+#Inicio p {
     font-size: 1.3em;
-    margin-bottom: var(--spacing-1);
-}
-
-#profileHeader .card p span {
-    font-weight: 700;
-    font-size: 1.3em;
-}
-
-#profileHeader .card ul {
-    background-color: var(--light-1);
-}
-
-#profileHeader .card li {
-    color: var(--dark-1);
-    padding: var(--spacing-1) var(--spacing-2);
     text-align: center;
-    border-bottom: 2px solid var(--dark-1);
+}
+
+#Inicio p span {
+    font-size: 1.3em;
     font-weight: 700;
 }
 
-#profileHeader .card li:nth-last-child(1) {
-    border-bottom: none;
+#Inicio ul {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
-@media (min-width: 992px) {
-    #profileHeader {
-        flex-direction: row;
-    }
-
-    .animacion {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        animation: animate 10s linear infinite;
-    }
-
-    .circle {
-        width: 50vw;
-        justify-content: center;
-        height: 100px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        animation: animate 10s linear infinite;
-    }
-
-    .circle::after {
-        content: '';
-        background-color: yellow;
-        border-radius: 50%;
-        width: 15px;
-        height: 15px;
-        box-shadow: 0 0 20px yellow,
-
-            40px -70px 0 gold,
-            40px -70px 20px yellow,
-
-            70px -70px 0 gold,
-            70px -70px 20px yellow,
-
-            -70px -150px 0 gold,
-            -70px -150px 20px yellow;
-
-        animation: animate 5s linear infinite;
-    }
-
-    .circle::before {
-        content: '';
-        background-color: var(--dark-1);
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        box-shadow: 0 0 20px var(--dark-1),
-
-            40px -70px 0 limegreen,
-            40px -70px 20px lightgreen,
-
-            70px -70px 0 lightseagreen,
-            70px -70px 20px cyan,
-
-            -70px -150px 0 crimson,
-            -70px -150px 20px lightcoral;
-
-        animation: animate 10s linear infinite;
-    }
-
-    @keyframes animate {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(360deg);
-        }
-    }
+#Inicio li {
+    background-color: var(--light-2);
+    font-weight: 700;
+    padding: var(--spacing-1) var(--spacing-2);
 }
 
 /* ============================== TECHNOLOGIES ==============================*/
 
-#technologies .content {
-    align-self: stretch;
+#Tecnologias .content {
     display: grid;
-    grid-template-columns: repeat(1, auto);
-    grid-template-rows: auto;
     gap: var(--spacing-4);
 }
 
-#technologies .card {
+#Tecnologias .card {
     background-color: var(--light-1);
-    border: 3px solid var(--dark-1);
-    gap: var(--spacing-2);
+    border: 2px solid var(--dark-1);
 }
 
-#technologies .card h3 {
-    color: var(--dark-1);
+#Tecnologias h3 {
     text-align: center;
     font-size: 1.3em;
 }
 
-#technologies .card p {
-    color: var(--dark-1);
-    font-size: 1.3em;
-    text-align: center;
-}
-
-#technologies .card div {
+#Tecnologias .card div {
+    align-items: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: var(--spacing-4);
+    justify-content: center;
 }
 
-#technologies .card figure {
-    flex-direction: column;
+#Tecnologias figure {
     align-items: center;
+    flex-direction: column;
     height: 3.5rem;
     width: 3.5rem;
 }
 
-#technologies .card figcaption {
+#Tecnologias figcaption {
     background-color: var(--dark-1);
-    border: 1px solid var(--light-1);
     border-radius: var(--spacing-1);
+    border: 1px solid var(--light-1);
+    color: var(--light-1);
     padding: var(--spacing-1);
 }
 
 @media (min-width: 992px) {
-    #technologies .content {
-        grid-template-columns: repeat(3, auto);
+    #Tecnologias .content {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* ============================== ESTUDIOS ==============================*/
-#studies .content {
-    align-self: stretch;
+#Estudios .content {
     display: grid;
-    grid-template-columns: 1fr;
     gap: var(--spacing-2);
 }
 
-#studies .card {
-    gap: var(--spacing-2);
-}
-
-#studies .card header,
-#studies .card div {
+#Estudios .card header,
+#Estudios .card div {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-#studies .card button {
+/* #Estudios button { este boton sera para la ventana modal
     align-self: flex-start;
     border-radius: 50%;
     cursor: pointer;
     padding: .4rem;
-}
+} */
 
-#studies .card h3 {
+#Estudios h3 {
     font-weight: 500;
 }
 
-#studies .card h4 {
+#Estudios h4 {
     font-weight: 300;
 }
 
-#studies .card span {
+#Estudios span {
     font-style: italic;
 }
 
 @media (min-width: 992px) {
-    #studies .content {
-        grid-template-columns: repeat(3, 1fr);
+    #Estudios .content {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* ============================== EXPERIENCIA ==============================*/
-#experience .content {
-    align-self: stretch;
-    display: grid;
-    grid-template-columns: 1fr;
+#Experiencias .content {
     align-items: start;
+    display: grid;
     gap: var(--spacing-6);
 }
 
-#experience .card {
-    gap: var(--spacing-2);
+#Experiencias .card {
     transition: 0.3s ease-in-out;
 }
 
-#experience .card h3 {
+#Experiencias h3 {
     font-size: 1.3em;
     text-align: center;
 }
 
-#experience .card h4 {
+#Experiencias h4 {
     font-weight: 500;
     text-align: center;
 }
 
-#experience .card figure {
+#Experiencias figure {
     align-self: center;
     border: 2px solid var(--dark-1);
     border-radius: var(--spacing-1);
@@ -459,28 +398,26 @@ main {
     padding: var(--spacing-1);
 }
 
-#experience .card:nth-child(1) figure {
+#Experiencias .card:nth-child(1) figure {
     background-color: var(--light-1);
 }
 
-#experience .card:nth-child(2) figure {
+#Experiencias .card:nth-child(2) figure {
     background-color: #111;
 }
 
-#experience .card img {
+#Experiencias img {
     object-fit: contain;
 }
 
-#experience .card p {
+#Experiencias p {
     font-size: 1.1em;
-    max-height: 0;
-    overflow: hidden;
     text-align: center;
     transition: max-height 0.5s ease-out;
 }
 
 @media (min-width: 992px) {
-    #experience .content {
+    #Experiencias .content {
         grid-template-columns: repeat(3, 1fr);
     }
 }
