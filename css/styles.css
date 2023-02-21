@@ -53,7 +53,7 @@ figure {
 }
 
 img {
-    width: 100%;
+    max-width: 100%;
 }
 
 a {
@@ -101,7 +101,8 @@ main {
     }
 }
 
-/* #myModal {
+/* ==================== VENTANA MODAL ==================== */
+#MiModal {
     background-color: rgba(0, 0, 0, 0.8);
     position: fixed;
     width: 100%;
@@ -109,29 +110,50 @@ main {
     z-index: 10;
     top: 0;
     left: 0;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+    padding: var(--spacing-4);
 }
 
-.modal-content {
+#MiModal.active {
     display: flex;
-    height: 70%;
-    overflow: hidden;
-    width: 80%;
 }
 
-#myModal header {
+#MiModal .card {
+    overflow-y: scroll;
+    height: 80vh;
+    width: 80vw;
+}
+
+#MiModal header {
+    align-items: center;
+    border-bottom: 2px solid var(--dark-1);
     display: flex;
     justify-content: space-between;
+    position: sticky;
 }
 
-#myModal h3,
-#myModal button {
-    color: var(--light-1);
+#MiModal button {
+    filter: invert(1);
+    background: url("/images/close.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    cursor: pointer;
+    height: var(--spacing-8);
+    position: relative;
+    width: var(--spacing-8);
 }
 
-#myModal figure {} */
+#MiModal .title-modal {
+    text-transform: uppercase;
+}
+
+#MiModal figure {
+    align-self: center;
+    border: 2px solid var(--dark-1);
+}
 
 /* ==================== MENU DE NAVEGACION ==================== */
 #MenuNavegacion {
@@ -235,7 +257,7 @@ main {
     #MenuNavegacion .navigation {
         color: var(--light-1);
     }
-    
+
     #MenuNavegacion.sticky .navigation {
         color: initial;
     }
@@ -300,6 +322,18 @@ main {
     font-size: 1.3em;
 }
 
+#Tecnologias p {
+    height: 0;
+    visibility: hidden;
+    transition: height 1s ease;
+}
+
+#Tecnologias .card:hover p {
+    height: auto;
+    visibility: visible;
+    background-color: red;
+}
+
 #Tecnologias .card div {
     align-items: center;
     display: flex;
@@ -341,12 +375,12 @@ main {
     justify-content: space-between;
 }
 
-/* #Estudios button { este boton sera para la ventana modal
-    align-self: flex-start;
+#Estudios button {
+    este boton sera para la ventana modal align-self: flex-start;
     border-radius: 50%;
     cursor: pointer;
     padding: .4rem;
-} */
+}
 
 #Estudios h3 {
     font-weight: 500;
@@ -411,9 +445,17 @@ main {
 }
 
 #Experiencias p {
+    background-color: red;
     font-size: 1.1em;
+    height: 0;
     text-align: center;
-    transition: max-height 0.5s ease-out;
+    visibility: hidden;
+    transition: height 1s ease-in-out;
+}
+
+#Experiencias .card:hover p {
+    height: auto;
+    visibility: visible;
 }
 
 @media (min-width: 992px) {
