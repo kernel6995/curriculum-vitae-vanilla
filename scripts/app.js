@@ -13,33 +13,53 @@ function menuToggle() {
     navigation.classList.toggle('active');
 }
 
+/* ===== FUNCION PARA EXPNDIR LA CARD DE LA SECCION EXPERIENCIAS ===== */
+
+function expandirCard(EV) {
+    // Se obtiene el botón que se ha pulsado
+    const boton = event.target;
+
+    // Se obtiene el div padre de la card
+    const card = boton.parentNode;
+
+    const contenido = card.querySelector('#Experiencias .card-contenido');
+
+    if (contenido.style.maxHeight) {
+        contenido.style.maxHeight = null;
+        boton.textContent = '➕';
+    } else {
+        contenido.style.maxHeight = contenido.scrollHeight + 'px';
+        boton.textContent = '➖';
+    }
+}
+
 /* ===== FUNCIONES LA VENTANA MODAL DE TECNOLOGIAS ===== */
 
 const storeStudies = [
     {
         _id: 1,
-        name: 'titulo',
-        src: '',
+        name: 'argentina progama 4.0',
+        imageName: 'arg_progama1.png',
     },
     {
         _id: 2,
-        name: 'titulo 2',
-        src: '',
+        name: 'rolling code school',
+        imageName: 'rolling_code.png',
     },
     {
         _id: 3,
-        name: 'titulo 3',
-        src: '',
+        name: 'certificado 3',
+        imageName: '',
     },
     {
         _id: 4,
-        name: 'titulo 4',
-        src: '',
+        name: 'certificado 4',
+        imageName: '',
     },
     {
         _id: 5,
-        name: 'titulo 5',
-        src: './images/R.jpg',
+        name: 'certificado 5',
+        imageName: '',
     },
 ];
 
@@ -49,7 +69,9 @@ function abrirModal(id) {
     const estudio = storeStudies.find(e => e._id === id);
     document.querySelector('#MiModal h3').innerHTML = estudio.name;
 
-    document.querySelector('#MiModal img').src ='./images/background_baner.jpg';
+    const imagen = estudio.imageName || 'error_certificdo.png'
+
+    document.querySelector('#MiModal img').src = './images/certificados/' + imagen;
 }
 
 function cerrarModal() {

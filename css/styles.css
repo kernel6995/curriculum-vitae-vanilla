@@ -13,11 +13,11 @@
     --spacing-9: 5rem;
 
     /* tamaños para fuentes */
-    --size-1: 1em;
-    --size-2: 1.3em;
-    --size-3: 1.5em;
-    --size-4: 1.7em;
-    --size-5: 2em;
+    --size-1: 1.3em;
+    --size-2: 1.5em;
+    --size-3: 1.7em;
+    --size-4: 2em;
+    --size-5: 2.5em;
 
     /* colores */
     --dark-1: #222;
@@ -34,6 +34,24 @@
     margin: var(--spacing-0);
     padding: var(--spacing-0);
     scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: var(--dark-1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: var(--light-1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--light-2);
 }
 
 /* ============================== ESTILO DE ETIQUETAS ==============================*/
@@ -77,7 +95,7 @@ main {
 
 .container>header h2 {
     text-align: center;
-    font-size: 2em;
+    font-size: var(--size-4);
 }
 
 .card {
@@ -92,6 +110,56 @@ main {
 .card.card-dark {
     background-color: var(--dark-1);
     color: var(--light-1);
+}
+
+.buttonIcon {
+    background-color: transparent;
+    border: 3px solid var(--light-2);
+    align-self: flex-start;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: var(--spacing-1);
+    font-size: var(--size-3);
+}
+
+.buttonIcon:hover {
+    background-color: var(--light-1);
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-sm {
+    font-size: var(--size-1);
+}
+
+.text-md {
+    font-size: var(--size-2);
+}
+
+.text-lg {
+    font-size: var(--size-3);
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.link {
+    color: royalblue;
+}
+
+.link:hover {
+    text-decoration: underline;
 }
 
 @media (min-width: 991px) {
@@ -121,43 +189,38 @@ main {
 }
 
 #MiModal .card {
-    overflow-y: scroll;
-    height: 80vh;
-    width: 80vw;
+    border: 3px solid var(--light-2);
+    overflow: hidden;
 }
 
 #MiModal header {
     align-items: center;
-    border-bottom: 2px solid var(--dark-1);
+    border-bottom: 3px solid var(--light-2);
     display: flex;
     justify-content: space-between;
-    position: sticky;
+    padding-bottom: var(--spacing-1);
 }
 
-#MiModal button {
-    filter: invert(1);
-    background: url("/images/close.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 25px;
-    cursor: pointer;
-    height: var(--spacing-8);
-    position: relative;
-    width: var(--spacing-8);
+#MiModal .buttonIcon {
+    align-self: center;
+    background-color: var(--light-2);
+    padding: var(--spacing-1) var(--spacing-2);
 }
 
-#MiModal .title-modal {
-    text-transform: uppercase;
+#MiModal .buttonIcon:hover {
+    background-color: initial;
+    color: var(--light-1);
 }
 
 #MiModal figure {
     align-self: center;
-    border: 2px solid var(--dark-1);
+    border: 3px solid var(--light-2);
 }
 
 /* ==================== MENU DE NAVEGACION ==================== */
 #MenuNavegacion {
     align-items: center;
+    color: var(--light-1);
     display: flex;
     justify-content: space-between;
     left: 0;
@@ -172,24 +235,7 @@ main {
 #MenuNavegacion.sticky {
     background-color: var(--light-1);
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
-}
-
-#MenuNavegacion .logo {
-    color: var(--light-1);
-}
-
-#MenuNavegacion.sticky .logo {
     color: initial;
-}
-
-#MenuNavegacion h1 {
-    font-size: 2em;
-    font-weight: 500;
-}
-
-#MenuNavegacion h2 {
-    font-size: 1.3em;
-    font-weight: 300;
 }
 
 #MenuNavegacion .navigation {
@@ -205,6 +251,7 @@ main {
     #MenuNavegacion .navigation.active {
         align-items: center;
         background-color: var(--light-1);
+        color: var(--dark-1);
         display: flex;
         flex-direction: column;
         gap: var(--spacing-4);
@@ -218,7 +265,7 @@ main {
 
     #MenuNavegacion .navigation a {
         display: block;
-        font-size: 2em;
+        font-size: var(--size-3);
         padding: var(--spacing-1) var(--spacing-2);
     }
 
@@ -245,24 +292,6 @@ main {
     }
 }
 
-@media (min-width: 992px) {
-    #MenuNavegacion h1 {
-        font-size: 1.7em;
-    }
-
-    #MenuNavegacion h2 {
-        font-size: 1em;
-    }
-
-    #MenuNavegacion .navigation {
-        color: var(--light-1);
-    }
-
-    #MenuNavegacion.sticky .navigation {
-        color: initial;
-    }
-}
-
 /* ==================== CABECERA DE PRESENTACION ==================== */
 #Inicio {
     background-color: var(--dark-1);
@@ -271,7 +300,6 @@ main {
 }
 
 #Inicio .card {
-    /* apunte--- reducir flexbox en .card?*/
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -280,16 +308,6 @@ main {
 
 #Inicio figure {
     width: 40%;
-}
-
-#Inicio p {
-    font-size: 1.3em;
-    text-align: center;
-}
-
-#Inicio p span {
-    font-size: 1.3em;
-    font-weight: 700;
 }
 
 #Inicio ul {
@@ -310,28 +328,12 @@ main {
 #Tecnologias .content {
     display: grid;
     gap: var(--spacing-4);
+    align-items: start;
 }
 
 #Tecnologias .card {
     background-color: var(--light-1);
     border: 2px solid var(--dark-1);
-}
-
-#Tecnologias h3 {
-    text-align: center;
-    font-size: 1.3em;
-}
-
-#Tecnologias p {
-    height: 0;
-    visibility: hidden;
-    transition: height 1s ease;
-}
-
-#Tecnologias .card:hover p {
-    height: auto;
-    visibility: visible;
-    background-color: red;
 }
 
 #Tecnologias .card div {
@@ -375,25 +377,6 @@ main {
     justify-content: space-between;
 }
 
-#Estudios button {
-    este boton sera para la ventana modal align-self: flex-start;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: .4rem;
-}
-
-#Estudios h3 {
-    font-weight: 500;
-}
-
-#Estudios h4 {
-    font-weight: 300;
-}
-
-#Estudios span {
-    font-style: italic;
-}
-
 @media (min-width: 992px) {
     #Estudios .content {
         grid-template-columns: repeat(2, 1fr);
@@ -405,20 +388,6 @@ main {
     align-items: start;
     display: grid;
     gap: var(--spacing-6);
-}
-
-#Experiencias .card {
-    transition: 0.3s ease-in-out;
-}
-
-#Experiencias h3 {
-    font-size: 1.3em;
-    text-align: center;
-}
-
-#Experiencias h4 {
-    font-weight: 500;
-    text-align: center;
 }
 
 #Experiencias figure {
@@ -444,18 +413,21 @@ main {
     object-fit: contain;
 }
 
-#Experiencias p {
-    background-color: red;
-    font-size: 1.1em;
-    height: 0;
-    text-align: center;
-    visibility: hidden;
-    transition: height 1s ease-in-out;
+#Experiencias .card div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
-#Experiencias .card:hover p {
-    height: auto;
-    visibility: visible;
+#Experiencias .card span.text-italic {
+    align-self: flex-end;
+}
+
+#Experiencias .card button {
+    margin: 0 auto;
 }
 
 @media (min-width: 992px) {
@@ -487,14 +459,6 @@ footer .card {
 
 footer .card h3 {
     border-bottom: 1px solid var(--dark-1);
-    text-align: center;
-    font-size: 1.3em;
-    font-weight: 500;
-}
-
-footer .card li {
-    font-size: 1.1em;
-    font-weight: 400;
 }
 
 footer li {
@@ -507,10 +471,5 @@ footer li {
         width: 100%;
         flex-direction: row;
         justify-content: space-evenly;
-    }
-
-    footer .card h3 {
-        font-weight: 700;
-        text-align: left;
     }
 }
