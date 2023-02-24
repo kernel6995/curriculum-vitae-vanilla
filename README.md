@@ -1,9 +1,10 @@
 # curriculum-vitae-vanilla
 Curriculum Vitae - HTML5 - CSS3 - JAVASCRIPT
 
-EJECUTAR EL SITIO WEB
-- clonar o descargar el repositorio.
-- abrir la carpeta "curriculum-vitae-vanilla".
+LINK PARA VISITAR EL SITIO WEB DE MI CURRICULUM
+- https://kernel6995.github.io/
+
+CLONAR O DESCARGAR EL PROYECTO Y EJECUTAR EL SITIO WEB
 - ejecutar el archivo index.html (tambien ejecutable desde un live server).
 
 ACTUALIZACIONES PENDIENTES
